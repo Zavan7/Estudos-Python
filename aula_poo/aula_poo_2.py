@@ -1,4 +1,4 @@
-from aula_poo_a import CAMINHO_ARQUIVO, Pessoa
+from aula_poo_1 import CAMINHO_ARQUIVO, Pessoa
 import json
 
 with open(CAMINHO_ARQUIVO, 'r') as f:

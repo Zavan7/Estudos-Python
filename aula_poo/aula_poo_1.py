@@ -1,3 +1,6 @@
+# atributo = dentro da classe
+# metodo da classe, são as funções
+
 import json
 from pathlib import Path
 
@@ -7,7 +10,6 @@ class Pessoa:
     def __init__(self, nome, idade):
         self.nome = nome
         self.idade = idade
-
 
 p1 = Pessoa('Vitor', 20)
 p2 = Pessoa('João', 30)
