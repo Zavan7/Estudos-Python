@@ -17,16 +17,6 @@
 
 import enum
 
-def mover(direcao):
-    print(f'Movendo para {direcao}')
-# Direcoes = enum.Enum('Direcoes', ['ESQUERDA', 'DIREITA'])
-
-
-mover('esquerda')
-mover('direita')
-mover('acima')
-mover('abaixo')
-
 class Direcoes(enum.Enum):
     ESQUERDA = enum.auto()
     DIREITA = enum.auto()
@@ -36,13 +26,15 @@ class Direcoes(enum.Enum):
 print(Direcoes(1), Direcoes['ESQUERDA'], Direcoes.ESQUERDA)
 print(Direcoes(1).name, Direcoes.ESQUERDA.value)
 
-def mover(direcao: Direcoes):
-    if not isinstance(direcao, Direcoes):
-        raise ValueError('Direção não encontrada')
-    print(f'Movendo para {direcao.name} ({direcao.value})')
-    
+def mover(direcao):
+    if isinstance(direcao, Direcoes):
+        print(f'Movendo para {direcao.name} ({direcao.value})')
+    elif isinstance(direcao, str):
+        print(f'Movendo para {direcao}')
+    else:
+        raise ValueError('Direção inválida')
+
+mover('esquerda')
+mover('direita')
 mover(Direcoes.ESQUERDA)
-mover(Direcoes.DIREITA)
 mover(Direcoes.ACIMA)
-mover(Direcoes.ABAIXO)
-mover(Direcoes.ABAIXO)
