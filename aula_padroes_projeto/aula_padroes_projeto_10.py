@@ -58,23 +58,18 @@ class UserBuilder(IUserBuilder):
 
     def add_firstname(self, firstname)-> UserBuilder:
         self._result.firstname = firstname
-        return self
     
     def add_lastname(self, lastname)-> UserBuilder:
         self._result.lastname = lastname
-        return self        
 
     def add_age(self, age)-> UserBuilder:
         self._result.age = age
-        return self
    
     def add_phone(self, phone)-> UserBuilder:
         self._result.phone.append(phone)
-        return self
        
     def add_addresses(self, addresses)-> UserBuilder:
         self._result.addresses.append(addresses)
-        return self
 
 
 class UserDirector:
@@ -87,9 +82,19 @@ class UserDirector:
         self._builder.add_age(agr)
         return self._builder.result
 
+    def with_adresses(self, firstname, lastname, addresses) -> User:
+        self._builder.add_firstname(firstname)
+        self._builder.add_lastname(lastname)
+        self._builder.add_addresses(addresses)
+        return self._builder.result
+
 
 if __name__ == '__main__':
     user_builder = UserBuilder()
     user_director = UserDirector(user_builder)
+
     user1 = user_director.with_age('Vitor', 'Zavan', 28)
+    user2 = user_director.with_adresses('Isabelle', 'Zavan', ('Av Brasil', 'Av SP'))
+
     print(user1)
+    print(user2)
